@@ -33,7 +33,6 @@ export default class Movies extends Component {
 
   render() {
     const { movies, isLoaded, error } = this.state;
-
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
