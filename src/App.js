@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch} 
 import Movies from './components/Movies.js';
 import Admin from './components/Admin.js';
 import Home from './components/Home.js';
-import Categories from './components/Categories.js';
 import OneMovie from './components/OneMovie.js';
+import Genres from './components/Genres.js';
 
 export default function App() {
 	return (
@@ -29,7 +29,7 @@ export default function App() {
 									<Link to='/movies'>Movies</Link>
 								</li>
 								<li className='list-group-item'>
-									<Link to='/by-category'>Categories</Link>
+									<Link to='/genres'>Genres</Link>
 								</li>
 								<li className='list-group-item'>
 									<Link to='/admin'>Manage Catalogue</Link>
@@ -46,22 +46,9 @@ export default function App() {
 							<Route path='/movies'>
 								<Movies />
 							</Route>
-							<Route exact path='/by-category'>
-								<CategoryPage />
+							<Route exact path='/genres'>
+								<Genres/>
 							</Route>
-
-							<Route
-								exact
-								path='/by-category/drama'
-								render={props => <Categories {...props} title={'Drama'} />}
-							/>
-
-							<Route
-								exact
-								path='/by-category/comedy'
-								render={props => <Categories {...props} title={'Comedy'} />}
-							/>
-
 							<Route path='/admin'>
 								<Admin />
 							</Route>
@@ -76,17 +63,3 @@ export default function App() {
 	);
 }
 
-function CategoryPage() {
-	const {path, url} = useRouteMatch();
-
-	return (
-		<div>
-			<h2>Categories</h2>
-
-			<ul>
-				<li><Link to={`${path}/comedy`}>Comedy</Link> </li>
-				<li><Link to={`${url}/drama`}>Drama</Link> </li>
-			</ul>
-		</div>
-	);
-}

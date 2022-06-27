@@ -32,6 +32,7 @@ export default class OneMovie extends Component {
         // console.log("Movie: " + movie)
         // console.log("Error:" + error)
         if (movie.genres) {
+            // convert to array
             movie.genres = Object.values(movie.genres)
         } else {
             movie.genres = []
